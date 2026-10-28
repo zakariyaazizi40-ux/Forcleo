@@ -1,0 +1,5813 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+
+<title>For You ♡</title>
+
+<style>
+
+/* =====================================================
+   BASIC
+===================================================== */
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    -webkit-tap-highlight-color:transparent;
+}
+
+:root{
+    --pink:#ef82ae;
+    --pink2:#ffdce9;
+    --pink3:#f7a9c7;
+    --dark:#604852;
+    --soft:#fff8fb;
+}
+
+html,body{
+    width:100%;
+    min-height:100%;
+}
+
+body{
+    background:#ffeef5;
+    font-family:Arial,sans-serif;
+    color:var(--dark);
+    overflow-x:hidden;
+}
+
+button,input,textarea{
+    font:inherit;
+}
+
+button{
+    border:0;
+    cursor:pointer;
+}
+
+.hidden{
+    display:none!important;
+}
+
+
+/* =====================================================
+   APP
+===================================================== */
+
+#app{
+    width:100%;
+    max-width:480px;
+    min-height:100vh;
+    margin:auto;
+    position:relative;
+    overflow:hidden;
+
+    background:
+        radial-gradient(
+            circle at 0% 0%,
+            #ffe0eb 0 15%,
+            transparent 34%
+        ),
+        radial-gradient(
+            circle at 100% 100%,
+            #e9e0ff 0 12%,
+            transparent 30%
+        ),
+        var(--soft);
+}
+
+
+/* =====================================================
+   PAGE
+===================================================== */
+
+.screen,
+.page{
+    width:100%;
+    min-height:100vh;
+
+    padding:
+        55px
+        20px
+        105px;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+}
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:flex;
+    animation:pageIn .45s ease;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:translateY(18px);
+    }
+
+    to{
+        opacity:1;
+        transform:none;
+    }
+}
+
+
+/* =====================================================
+   TEXT
+===================================================== */
+
+.eyebrow{
+    margin-top:12px;
+    color:#d8759d;
+    font-size:9px;
+    font-weight:900;
+    letter-spacing:2px;
+    text-transform:uppercase;
+}
+
+h1{
+    font-size:39px;
+    line-height:1.05;
+}
+
+h2{
+    font-size:27px;
+    line-height:1.15;
+}
+
+.title{
+    margin-top:10px;
+}
+
+.title span{
+    color:var(--pink);
+}
+
+.text{
+    margin-top:13px;
+    color:#907b84;
+    font-size:13px;
+    line-height:1.8;
+}
+
+.btn{
+    margin-top:20px;
+    padding:14px 23px;
+    border-radius:999px;
+
+    background:var(--pink);
+    color:white;
+
+    font-size:13px;
+    font-weight:900;
+
+    box-shadow:
+        0 10px 25px
+        rgba(230,120,160,.25);
+
+    transition:.15s;
+}
+
+.btn:active{
+    transform:scale(.92);
+}
+
+
+/* =====================================================
+   DECOR
+===================================================== */
+
+.spark{
+    position:absolute;
+    pointer-events:none;
+    color:#ef82ad;
+    animation:float 3s ease-in-out infinite;
+}
+
+.s1{
+    top:11%;
+    left:8%;
+}
+
+.s2{
+    top:24%;
+    right:9%;
+    animation-delay:.6s;
+}
+
+.s3{
+    bottom:18%;
+    left:12%;
+    animation-delay:1.2s;
+}
+
+.s4{
+    bottom:10%;
+    right:13%;
+    animation-delay:1.7s;
+}
+
+@keyframes float{
+    50%{
+        transform:
+            translateY(-10px)
+            rotate(12deg);
+    }
+}
+
+
+/* =====================================================
+   MUSIC PLAYER
+===================================================== */
+
+.musicButton{
+    position:fixed;
+    top:15px;
+    right:15px;
+
+    width:43px;
+    height:43px;
+
+    z-index:500;
+
+    border-radius:50%;
+    background:white;
+    color:#d8759d;
+
+    box-shadow:
+        0 6px 18px
+        rgba(160,90,125,.15);
+
+    display:none;
+
+    align-items:center;
+    justify-content:center;
+
+    font-size:18px;
+}
+
+.musicButton.show{
+    display:flex;
+}
+
+.musicButton.playing{
+    animation:musicPulse 1.2s infinite;
+}
+
+@keyframes musicPulse{
+    50%{
+        transform:scale(1.08);
+        box-shadow:
+            0 0 0 7px
+            rgba(242,139,178,.12);
+    }
+}
+
+
+/* =====================================================
+   PIN
+===================================================== */
+
+.lockMascot{
+    width:115px;
+    height:115px;
+
+    border-radius:38px;
+    background:white;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:60px;
+
+    box-shadow:
+        0 15px 45px
+        rgba(170,100,135,.13);
+
+    animation:bob 2s ease-in-out infinite;
+}
+
+@keyframes bob{
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+.lockTitle{
+    margin-top:15px;
+}
+
+.lockTitle span{
+    color:var(--pink);
+}
+
+.subtitle{
+    margin-top:12px;
+    color:#927c86;
+    font-size:13px;
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   PIN
+===================================================== */
+
+.pin{
+    display:flex;
+    gap:7px;
+    margin:22px 0 15px;
+}
+
+.pinDot{
+    width:40px;
+    height:48px;
+
+    background:white;
+
+    border:
+        2px solid
+        #f2d8e4;
+
+    border-radius:14px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:14px;
+    color:var(--pink);
+}
+
+.pinDot.filled{
+    background:#fff0f6;
+    border-color:#ef91b4;
+}
+
+
+/* =====================================================
+   KEYPAD
+===================================================== */
+
+.keypad{
+    width:230px;
+
+    display:grid;
+    grid-template-columns:repeat(3,70px);
+
+    gap:9px;
+
+    justify-content:center;
+}
+
+.key{
+    height:54px;
+
+    background:white;
+    color:var(--dark);
+
+    border-radius:19px;
+
+    font-size:18px;
+    font-weight:800;
+
+    box-shadow:
+        0 6px 18px
+        rgba(160,90,125,.09);
+
+    transition:.12s;
+}
+
+.key:active{
+    transform:scale(.88);
+    background:#ffe2ee;
+}
+
+.key.delete{
+    color:#d8759d;
+}
+
+.key.empty{
+    opacity:0;
+    pointer-events:none;
+}
+
+.pinError{
+    min-height:18px;
+    margin-top:9px;
+
+    color:#e46e91;
+    font-size:11px;
+}
+
+
+/* =====================================================
+   TOP BAR
+===================================================== */
+
+.topbar{
+    position:fixed;
+
+    top:12px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:calc(100% - 85px);
+    max-width:410px;
+
+    z-index:400;
+
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+
+.progress{
+    flex:1;
+
+    height:8px;
+
+    background:#f4dbe6;
+
+    border-radius:99px;
+
+    overflow:hidden;
+}
+
+.progressFill{
+    width:0;
+    height:100%;
+
+    background:var(--pink);
+
+    border-radius:99px;
+
+    transition:.5s;
+}
+
+.level{
+    background:white;
+
+    border-radius:999px;
+
+    padding:7px 10px;
+
+    font-size:10px;
+    font-weight:900;
+
+    color:#d6739b;
+
+    box-shadow:
+        0 4px 12px
+        rgba(160,90,125,.08);
+}
+
+
+/* =====================================================
+   MASCOT
+===================================================== */
+
+.mascot{
+    width:130px;
+    height:130px;
+
+    background:white;
+
+    border-radius:42px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    font-size:70px;
+
+    box-shadow:
+        0 15px 45px
+        rgba(170,100,135,.13);
+
+    position:relative;
+}
+
+.bubble{
+    position:absolute;
+
+    top:-18px;
+    right:-20px;
+
+    background:white;
+
+    padding:9px 12px;
+
+    border-radius:
+        15px
+        15px
+        4px
+        15px;
+
+    color:#d56f98;
+
+    font-size:10px;
+
+    max-width:150px;
+
+    box-shadow:
+        0 5px 18px
+        rgba(160,90,125,.1);
+}
+
+
+/* =====================================================
+   METER
+===================================================== */
+
+.meterBox{
+    width:100%;
+    margin-top:20px;
+}
+
+.meterTop{
+    display:flex;
+    justify-content:space-between;
+
+    color:#997e89;
+
+    font-size:11px;
+
+    margin-bottom:7px;
+}
+
+.meter{
+    height:12px;
+
+    background:#f2dfe7;
+
+    border-radius:99px;
+
+    overflow:hidden;
+}
+
+.meterFill{
+    width:10%;
+    height:100%;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f18bb2,
+            #f6b1cb
+        );
+
+    border-radius:99px;
+
+    transition:.6s;
+}
+
+
+/* =====================================================
+   ROOM
+===================================================== */
+
+.room{
+    width:100%;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:12px;
+
+    margin-top:22px;
+}
+
+.roomItem{
+    min-height:100px;
+
+    background:white;
+
+    border-radius:22px;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:7px;
+
+    box-shadow:
+        0 8px 22px
+        rgba(160,90,125,.08);
+
+    transition:.18s;
+}
+
+.roomItem:active{
+    transform:scale(.92);
+}
+
+.roomItem span{
+    font-size:35px;
+}
+
+.roomItem small{
+    color:#886f7b;
+    font-size:10px;
+    font-weight:800;
+}
+
+
+/* =====================================================
+   NEW GIFT BOX
+===================================================== */
+
+.giftScene{
+    width:190px;
+    height:210px;
+
+    position:relative;
+
+    margin:30px auto 5px;
+
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+
+    perspective:700px;
+}
+
+.giftBox{
+    position:relative;
+
+    width:145px;
+    height:105px;
+
+    margin-bottom:10px;
+}
+
+.giftBase{
+    position:absolute;
+
+    left:0;
+    bottom:0;
+
+    width:145px;
+    height:85px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #f07eaa,
+            #f695b8
+        );
+
+    border-radius:
+        8px
+        8px
+        15px
+        15px;
+
+    box-shadow:
+        0 15px 25px
+        rgba(220,100,145,.2);
+
+    overflow:hidden;
+}
+
+.giftBase:after{
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+
+    top:0;
+
+    width:20px;
+    height:100%;
+
+    transform:translateX(-50%);
+
+    background:#ffe4ef;
+}
+
+.giftLid{
+    position:absolute;
+
+    left:-7px;
+    top:-5px;
+
+    width:159px;
+    height:30px;
+
+    background:
+        linear-gradient(
+            90deg,
+            #eb6e9e,
+            #f487ae
+        );
+
+    border-radius:9px;
+
+    z-index:4;
+
+    transform-origin:
+        8% 100%;
+
+    transition:
+        .7s
+        cubic-bezier(.2,.8,.2,1);
+
+    box-shadow:
+        0 5px 12px
+        rgba(210,90,135,.18);
+}
+
+.giftLid:after{
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    top:0;
+
+    width:20px;
+    height:100%;
+
+    transform:translateX(-50%);
+
+    background:#ffe4ef;
+}
+
+.giftBow{
+    position:absolute;
+
+    left:50%;
+    top:-42px;
+
+    transform:
+        translateX(-50%);
+
+    width:70px;
+    height:48px;
+
+    z-index:10;
+}
+
+.bowLeft,
+.bowRight{
+    position:absolute;
+
+    width:38px;
+    height:30px;
+
+    background:#f17cab;
+
+    top:8px;
+
+    border-radius:
+        50%
+        50%
+        12px
+        50%;
+}
+
+.bowLeft{
+    left:0;
+    transform:rotate(-25deg);
+}
+
+.bowRight{
+    right:0;
+    transform:scaleX(-1) rotate(-25deg);
+}
+
+.bowCenter{
+    position:absolute;
+
+    left:50%;
+    top:17px;
+
+    width:18px;
+    height:18px;
+
+    transform:translateX(-50%);
+
+    border-radius:50%;
+
+    background:#df6495;
+
+    z-index:3;
+}
+
+.giftRibbonFront{
+    position:absolute;
+
+    left:50%;
+    bottom:0;
+
+    transform:translateX(-50%);
+
+    width:20px;
+    height:85px;
+
+    background:#ffe4ef;
+
+    z-index:5;
+}
+
+.gift.open .giftLid{
+    transform:
+        translate(
+            4px,
+            -55px
+        )
+        rotate(8deg);
+}
+
+.gift.open .giftBow{
+    animation:
+        bowPop
+        .7s
+        ease forwards;
+}
+
+@keyframes bowPop{
+    50%{
+        transform:
+            translateX(-50%)
+            translateY(-12px)
+            rotate(7deg);
+    }
+
+    100%{
+        transform:
+            translateX(-50%)
+            translateY(-3px)
+            rotate(-4deg);
+    }
+}
+
+
+/* =====================================================
+   HEART PHOTO
+===================================================== */
+
+.flying-photo{
+
+    position:fixed;
+
+    width:76px;
+    height:76px;
+
+    z-index:250;
+
+    object-fit:cover;
+
+    border-radius:0;
+
+    overflow:visible;
+
+    clip-path:none;
+
+    filter:
+        drop-shadow(
+            0 8px 12px
+            rgba(220,90,140,.28)
+        );
+
+    animation:
+        photoBurst
+        1.8s
+        cubic-bezier(.15,.8,.3,1)
+        forwards;
+
+    pointer-events:none;
+}
+
+
+/* Proper CSS heart shape */
+
+.flying-photo{
+    -webkit-mask:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 88 C45 83 8 61 8 32 C8 14 22 5 37 5 C45 5 50 10 50 18 C50 10 55 5 63 5 C78 5 92 14 92 32 C92 61 55 83 50 88Z' fill='black'/%3E%3C/svg%3E")
+        center/100% 100% no-repeat;
+
+    mask:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M50 88 C45 83 8 61 8 32 C8 14 22 5 37 5 C45 5 50 10 50 18 C50 10 55 5 63 5 C78 5 92 14 92 32 C92 61 55 83 50 88Z' fill='black'/%3E%3C/svg%3E")
+        center/100% 100% no-repeat;
+}
+
+@keyframes photoBurst{
+
+    0%{
+        opacity:0;
+
+        transform:
+            translate(-50%,-50%)
+            scale(.15)
+            rotate(0deg);
+    }
+
+    15%{
+        opacity:1;
+    }
+
+    100%{
+        opacity:1;
+
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            scale(1)
+            rotate(var(--rotate));
+    }
+}
+
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.card{
+    width:100%;
+
+    margin-top:20px;
+
+    padding:22px;
+
+    background:white;
+
+    border-radius:28px;
+
+    box-shadow:
+        0 15px 45px
+        rgba(170,100,135,.13);
+}
+
+
+/* =====================================================
+   HEART GAME
+===================================================== */
+
+.score{
+    margin-top:12px;
+
+    color:#d8749c;
+
+    font-size:14px;
+
+    font-weight:900;
+}
+
+.gameArea{
+    width:100%;
+    height:300px;
+
+    margin-top:15px;
+
+    border-radius:25px;
+
+    background:#ffe9f2;
+
+    position:relative;
+
+    overflow:hidden;
+
+    border:3px solid white;
+}
+
+.gameHeart{
+    position:absolute;
+
+    width:45px;
+    height:45px;
+
+    padding:0;
+
+    border:0;
+
+    background:transparent;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:28px;
+
+    z-index:5;
+
+    touch-action:manipulation;
+
+    animation:
+        heartFloat
+        2.2s
+        linear
+        forwards;
+}
+
+@keyframes heartFloat{
+    from{
+        transform:
+            translateY(0)
+            rotate(0);
+
+        opacity:1;
+    }
+
+    to{
+        transform:
+            translateY(-340px)
+            rotate(25deg);
+
+        opacity:0;
+    }
+}
+
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+.galleryTitle{
+    margin-top:10px;
+}
+
+.galleryWrap{
+    width:100%;
+    margin-top:20px;
+    position:relative;
+}
+
+.photoCard{
+    width:100%;
+
+    background:#fffdf8;
+
+    padding:
+        12px
+        12px
+        18px;
+
+    border-radius:5px;
+
+    box-shadow:
+        0 18px 45px
+        rgba(100,70,70,.15);
+
+    transform:rotate(-1.2deg);
+
+    position:relative;
+
+    transition:.2s;
+}
+
+.photoCard:before{
+    content:"";
+
+    position:absolute;
+
+    width:75px;
+    height:22px;
+
+    background:#ffd9e7;
+
+    top:-9px;
+    left:50%;
+
+    transform:
+        translateX(-50%)
+        rotate(-2deg);
+
+    opacity:.85;
+}
+
+.photoCard img{
+    width:100%;
+
+    aspect-ratio:4/5;
+
+    object-fit:cover;
+
+    display:block;
+
+    border-radius:2px;
+
+    background:#f7e8ee;
+}
+
+.photoCaption{
+    padding:
+        15px
+        8px
+        3px;
+
+    font-family:cursive;
+
+    color:#765b67;
+
+    font-size:14px;
+
+    line-height:1.5;
+}
+
+.photoNumber{
+    margin-top:4px;
+
+    color:#b28d9c;
+
+    font-size:9px;
+
+    letter-spacing:1px;
+}
+
+.galleryControls{
+    width:100%;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:13px;
+}
+
+.arrow{
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:#d9759d;
+
+    font-size:20px;
+
+    box-shadow:
+        0 7px 18px
+        rgba(160,90,125,.09);
+}
+
+.dots{
+    display:flex;
+    gap:5px;
+}
+
+.dot{
+    width:7px;
+    height:7px;
+
+    background:#e9ccd9;
+
+    border-radius:50%;
+}
+
+.dot.active{
+    width:20px;
+
+    border-radius:99px;
+
+    background:#ef91b4;
+}
+
+.tapHint{
+    margin-top:10px;
+
+    color:#ad8b98;
+
+    font-size:9px;
+}
+
+
+/* =====================================================
+   PHOTO POPUP
+===================================================== */
+
+.photoPopup{
+    position:fixed;
+
+    inset:0;
+
+    background:
+        rgba(50,30,40,.76);
+
+    z-index:600;
+
+    display:none;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:20px;
+}
+
+.photoPopup.show{
+    display:flex;
+}
+
+.popupInner{
+    width:100%;
+    max-width:430px;
+}
+
+.popupInner img{
+    width:100%;
+    max-height:75vh;
+
+    object-fit:contain;
+
+    border-radius:8px;
+}
+
+.closePopup{
+    width:45px;
+    height:45px;
+
+    margin:
+        15px
+        auto
+        0;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    background:white;
+
+    color:#d8759d;
+
+    border-radius:50%;
+
+    font-size:20px;
+}
+
+
+/* =====================================================
+   LETTER
+===================================================== */
+
+.envelope{
+    font-size:85px;
+
+    animation:
+        wiggle
+        1.7s
+        ease-in-out
+        infinite;
+}
+
+@keyframes wiggle{
+    25%{
+        transform:rotate(-6deg);
+    }
+
+    75%{
+        transform:rotate(6deg);
+    }
+}
+
+.note{
+    width:100%;
+
+    margin-top:18px;
+
+    padding:
+        28px
+        22px;
+
+    text-align:left;
+
+    background:#fffdf6;
+
+    border-radius:8px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(100,70,50,.1);
+
+    position:relative;
+}
+
+.note:before{
+    content:"";
+
+    position:absolute;
+
+    width:17px;
+    height:17px;
+
+    border-radius:50%;
+
+    background:#ee83aa;
+
+    top:10px;
+    left:50%;
+
+    transform:
+        translateX(-50%);
+}
+
+.note h2{
+    margin:
+        8px
+        0
+        18px;
+}
+
+.note p{
+    color:#76626a;
+
+    font-size:13px;
+
+    line-height:1.8;
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+.question{
+    font-size:16px;
+    line-height:1.6;
+    margin-bottom:15px;
+}
+
+.answers{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.answer{
+    width:100%;
+
+    padding:13px;
+
+    border-radius:17px;
+
+    background:white;
+
+    border:
+        2px solid
+        #f4e0e8;
+
+    color:#705b65;
+
+    font-weight:800;
+}
+
+.answer.correct{
+    background:#e4faeb;
+    border-color:#91d6aa;
+}
+
+.answer.wrong{
+    animation:shake .3s;
+}
+
+@keyframes shake{
+    25%{
+        transform:translateX(-7px);
+    }
+
+    50%{
+        transform:translateX(7px);
+    }
+
+    75%{
+        transform:translateX(-4px);
+    }
+}
+
+
+/* =====================================================
+   MYSTERY
+===================================================== */
+
+.boxes{
+    width:100%;
+
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:10px;
+
+    margin-top:22px;
+}
+
+.mystery{
+    min-height:120px;
+
+    background:white;
+
+    border-radius:22px;
+
+    box-shadow:
+        0 8px 22px
+        rgba(160,90,125,.08);
+
+    font-size:48px;
+
+    transition:.25s;
+}
+
+.mystery:active{
+    transform:
+        scale(.9)
+        rotate(-4deg);
+}
+
+
+/* =====================================================
+   RUNAWAY
+===================================================== */
+
+.runaway{
+    width:100%;
+    height:130px;
+
+    margin-top:15px;
+
+    position:relative;
+}
+
+.noBtn{
+    position:absolute;
+
+    left:50%;
+    top:40px;
+
+    transform:translateX(-50%);
+
+    background:white;
+
+    color:#e16f96;
+
+    border:
+        2px solid
+        #f2d9e5;
+
+    padding:
+        13px
+        22px;
+
+    border-radius:999px;
+
+    transition:.15s;
+}
+
+
+/* =====================================================
+   WISH
+===================================================== */
+
+textarea{
+    width:100%;
+    height:110px;
+
+    margin-top:15px;
+
+    resize:none;
+
+    border:
+        2px solid
+        #f2dce6;
+
+    border-radius:20px;
+
+    background:white;
+
+    padding:15px;
+
+    outline:none;
+
+    color:#604c56;
+}
+
+textarea:focus{
+    border-color:#ef91b4;
+}
+
+
+/* =====================================================
+   ACHIEVEMENTS
+===================================================== */
+
+.achievements{
+    width:100%;
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+
+    gap:10px;
+
+    margin-top:18px;
+}
+
+.badge{
+    padding:
+        17px
+        10px;
+
+    background:white;
+
+    border-radius:20px;
+
+    box-shadow:
+        0 7px 20px
+        rgba(160,90,125,.07);
+}
+
+.badge b{
+    display:block;
+
+    font-size:26px;
+
+    margin-bottom:6px;
+}
+
+.badge small{
+    color:#806c75;
+    font-size:10px;
+}
+
+
+/* =====================================================
+   FINAL
+===================================================== */
+
+.finalHeart{
+    font-size:90px;
+
+    animation:
+        heartBeat
+        1.15s
+        infinite;
+}
+
+@keyframes heartBeat{
+    15%{
+        transform:scale(1.18);
+    }
+
+    30%{
+        transform:scale(1);
+    }
+}
+
+.finalMessage{
+    width:100%;
+
+    margin-top:18px;
+
+    padding:22px;
+
+    background:white;
+
+    border-radius:25px;
+
+    box-shadow:
+        0 15px 45px
+        rgba(170,100,135,.13);
+}
+
+.finalMessage p{
+    color:#806d76;
+
+    font-size:13px;
+
+    line-height:1.8;
+
+    margin-bottom:10px;
+}
+
+
+/* =====================================================
+   FLOAT EFFECTS
+===================================================== */
+
+.float{
+    position:fixed;
+
+    pointer-events:none;
+
+    z-index:100;
+
+    animation:
+        rise
+        4s
+        linear
+        forwards;
+}
+
+@keyframes rise{
+    to{
+        transform:
+            translateY(-110vh)
+            rotate(30deg);
+
+        opacity:0;
+    }
+}
+
+.confetti{
+    position:fixed;
+
+    top:-30px;
+
+    pointer-events:none;
+
+    z-index:101;
+
+    animation:
+        fall
+        3s
+        linear
+        forwards;
+}
+
+@keyframes fall{
+    to{
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+    }
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast{
+    position:fixed;
+
+    left:50%;
+    bottom:22px;
+
+    transform:
+        translate(-50%,30px);
+
+    background:#5f4350;
+
+    color:white;
+
+    padding:
+        11px
+        15px;
+
+    border-radius:999px;
+
+    font-size:11px;
+
+    z-index:700;
+
+    opacity:0;
+
+    pointer-events:none;
+
+    transition:.3s;
+
+    max-width:85%;
+
+    text-align:center;
+}
+
+.toast.show{
+    opacity:1;
+
+    transform:
+        translate(-50%,0);
+}
+
+.cursor{
+    border-right:
+        2px solid
+        #e37aa2;
+
+    animation:
+        blink .7s infinite;
+}
+
+@keyframes blink{
+    50%{
+        border-color:transparent;
+    }
+}
+
+
+/* =====================================================
+   SPOTIFY STYLE
+===================================================== */
+
+.spotifyCard{
+
+    width:100%;
+
+    margin-top:20px;
+
+    padding:18px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #fff,
+            #fff5f9
+        );
+
+    border-radius:28px;
+
+    box-shadow:
+        0 15px 40px
+        rgba(130,70,100,.13);
+
+}
+
+.musicTop{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    text-align:left;
+
+}
+
+.albumCover{
+
+    width:62px;
+    height:62px;
+
+    border-radius:16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ef82ae,
+            #f7c0d5
+        );
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:30px;
+
+    box-shadow:
+        0 8px 20px
+        rgba(220,100,145,.2);
+
+    flex-shrink:0;
+
+}
+
+.songInfo{
+    min-width:0;
+}
+
+.songInfo b{
+    display:block;
+
+    font-size:14px;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+}
+
+.songInfo small{
+
+    display:block;
+
+    margin-top:5px;
+
+    color:#9b838e;
+
+    font-size:10px;
+
+}
+
+.musicProgress{
+
+    width:100%;
+
+    height:5px;
+
+    margin-top:17px;
+
+    background:#eadce2;
+
+    border-radius:99px;
+
+    overflow:hidden;
+
+}
+
+.musicProgressFill{
+
+    width:0%;
+
+    height:100%;
+
+    background:#df719c;
+
+    border-radius:99px;
+
+}
+
+.timeRow{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-top:5px;
+
+    color:#a18b94;
+
+    font-size:9px;
+
+}
+
+.musicControls{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:20px;
+
+    margin-top:13px;
+
+}
+
+.musicControl{
+
+    width:43px;
+    height:43px;
+
+    border-radius:50%;
+
+    background:white;
+
+    color:#d56f98;
+
+    box-shadow:
+        0 6px 15px
+        rgba(160,90,125,.1);
+
+    font-size:17px;
+
+}
+
+.musicControl.main{
+
+    width:50px;
+    height:50px;
+
+    background:#df719c;
+
+    color:white;
+
+}
+
+.lyricsBox{
+
+    width:100%;
+
+    height:220px;
+
+    margin-top:20px;
+
+    overflow-y:auto;
+
+    overflow-x:hidden;
+
+    scroll-behavior:smooth;
+
+    border-radius:22px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #fff8fb,
+            #fff0f6
+        );
+
+    padding:
+        95px
+        18px;
+
+    overscroll-behavior:contain;
+
+    scrollbar-width:none;
+
+}
+
+.lyricsBox::-webkit-scrollbar{
+    display:none;
+}
+
+.lyricsTrack{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.lyricLine{
+
+    text-align:center;
+
+    color:#baa5ae;
+
+    font-size:14px;
+
+    line-height:1.5;
+
+    opacity:.42;
+
+    transform:scale(.94);
+
+    transition:
+        .35s ease;
+
+}
+
+.lyricLine.active{
+
+    color:#df719c;
+
+    opacity:1;
+
+    transform:scale(1.06);
+
+    font-weight:900;
+
+}
+
+.lyricHint{
+
+    margin-top:9px;
+
+    color:#b0929f;
+
+    font-size:9px;
+
+}
+
+
+/* =====================================================
+   SLIDE NAVIGATION
+===================================================== */
+
+.slideNavigation{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:15px;
+
+    transform:translateX(-50%);
+
+    width:
+        calc(100% - 30px);
+
+    max-width:450px;
+
+    z-index:450;
+
+    display:none;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    pointer-events:none;
+
+}
+
+.slideNavigation.show{
+    display:flex;
+}
+
+.navBtn{
+
+    pointer-events:auto;
+
+    min-width:72px;
+
+    height:42px;
+
+    padding:
+        0
+        15px;
+
+    border-radius:999px;
+
+    background:white;
+
+    color:#d8759d;
+
+    font-size:11px;
+
+    font-weight:900;
+
+    box-shadow:
+        0 7px 20px
+        rgba(160,90,125,.13);
+
+}
+
+.navBtn:active{
+    transform:scale(.92);
+}
+
+.navCenter{
+
+    color:#a78391;
+
+    font-size:9px;
+
+    background:
+        rgba(255,255,255,.88);
+
+    padding:
+        7px
+        12px;
+
+    border-radius:999px;
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     MUSIC
+===================================================== -->
+
+<audio
+    id="bgMusic"
+    loop
+    preload="auto"
+>
+
+    <source
+        src="musik.mp3"
+        type="audio/mpeg"
+    >
+
+</audio>
+
+
+<button
+    class="musicButton"
+    id="musicButton"
+    onclick="toggleMusic()"
+>
+    🎵
+</button>
+
+
+<div id="app">
+
+    <div class="spark s1">✦</div>
+    <div class="spark s2">♡</div>
+    <div class="spark s3">✧</div>
+    <div class="spark s4">✦</div>
+
+
+    <!-- =================================================
+         PIN
+    ================================================== -->
+
+    <section
+        class="screen"
+        id="lockScreen"
+    >
+
+        <div class="lockMascot">
+            🐰
+        </div>
+
+        <div class="eyebrow">
+            secret special room
+        </div>
+
+        <h1 class="lockTitle">
+            Ada sesuatu<br>
+            <span>buat kamu.</span>
+        </h1>
+
+        <p class="subtitle">
+            Tapiii... cuman kita<br>
+            yang boleh masuk 😌
+        </p>
+
+        <div
+            class="pin"
+            id="pin"
+        >
+
+            <div class="pinDot">○</div>
+            <div class="pinDot">○</div>
+            <div class="pinDot">○</div>
+            <div class="pinDot">○</div>
+            <div class="pinDot">○</div>
+            <div class="pinDot">○</div>
+
+        </div>
+
+
+        <div class="keypad">
+
+            <button class="key"
+                onclick="keyPress('1')">1</button>
+
+            <button class="key"
+                onclick="keyPress('2')">2</button>
+
+            <button class="key"
+                onclick="keyPress('3')">3</button>
+
+            <button class="key"
+                onclick="keyPress('4')">4</button>
+
+            <button class="key"
+                onclick="keyPress('5')">5</button>
+
+            <button class="key"
+                onclick="keyPress('6')">6</button>
+
+            <button class="key"
+                onclick="keyPress('7')">7</button>
+
+            <button class="key"
+                onclick="keyPress('8')">8</button>
+
+            <button class="key"
+                onclick="keyPress('9')">9</button>
+
+            <button class="key empty"></button>
+
+            <button class="key"
+                onclick="keyPress('0')">0</button>
+
+            <button class="key delete"
+                onclick="deleteKey()">⌫</button>
+
+        </div>
+
+
+        <div
+            class="pinError"
+            id="pinError"
+        ></div>
+
+    </section>
+
+
+    <!-- =================================================
+         MAIN
+    ================================================== -->
+
+    <main
+        id="main"
+        class="hidden"
+    >
+
+        <div class="topbar">
+
+            <div class="progress">
+
+                <div
+                    class="progressFill"
+                    id="progress"
+                ></div>
+
+            </div>
+
+            <div
+                class="level"
+                id="level"
+            >
+                LV. 1
+            </div>
+
+        </div>
+
+
+        <!-- PAGE 1 -->
+
+        <section
+            class="page active"
+            id="page1"
+        >
+
+            <div
+                class="mascot"
+                onclick="tapMascot()"
+            >
+
+                🐰
+
+                <div
+                    class="bubble"
+                    id="mascotBubble"
+                >
+                    pencet aku 👀
+                </div>
+
+            </div>
+
+            <div class="eyebrow">
+                welcome to special adventure
+            </div>
+
+            <h1 class="title">
+                Hai,<br>
+                <span id="nameA">
+                    PRETTY Girl
+                </span>! 🎀
+            </h1>
+
+            <p class="text">
+                Aku bikin satu tempat kecil
+                khusus buat kamu.
+                <br>
+                Jelajahi semuanya sampai
+                kamu menemukan bagian terakhir. btw udah liat kelinci di atas ntuh?
+            </p>
+
+            <div class="meterBox">
+
+                <div class="meterTop">
+
+                    <span>
+                        Happiness
+                    </span>
+
+                    <b id="meterText">
+                        10%
+                    </b>
+
+                </div>
+
+                <div class="meter">
+
+                    <div
+                        class="meterFill"
+                        id="meter"
+                    ></div>
+
+                </div>
+
+            </div>
+
+            <button
+                class="btn"
+                onclick="nextPage()"
+            >
+                Mulai petualangan 🎀
+            </button>
+
+        </section>
+
+
+        <!-- PAGE 2 -->
+
+        <section
+            class="page"
+            id="page2"
+        >
+
+            <div class="eyebrow">
+                special room
+            </div>
+
+            <h2>
+                Coba pencet<br>
+                semuanya 👀
+            </h2>
+
+            <p class="text">
+                Ada beberapa benda yang
+                harus kamu cari tauu.
+            </p>
+
+            <div class="room">
+
+                <button
+                    class="roomItem"
+                    onclick="roomClick('gift')"
+                >
+                    <span>🎁</span>
+                    <small>Hadiah</small>
+                </button>
+
+                <button
+                    class="roomItem"
+                    onclick="roomClick('cake')"
+                >
+                    <span>🎂</span>
+                    <small>Kue</small>
+                </button>
+
+                <button
+                    class="roomItem"
+                    onclick="roomClick('bear')"
+                >
+                    <span>🧸</span>
+                    <small>Boneka</small>
+                </button>
+
+                <button
+                    class="roomItem"
+                    onclick="roomClick('letter')"
+                >
+                    <span>💌</span>
+                    <small>Surat</small>
+                </button>
+
+                <button
+                    class="roomItem"
+                    onclick="roomClick('photo')"
+                >
+                    <span>📸</span>
+                    <small>Foto</small>
+                </button>
+
+                <button
+                    class="roomItem"
+                    onclick="roomClick('star')"
+                >
+                    <span>⭐</span>
+                    <small>Rahasia</small>
+                </button>
+
+            </div>
+
+            <button
+                class="btn"
+                onclick="nextPage()"
+            >
+                Ayooo kita carii tauu →
+            </button>
+
+        </section>
+
+
+        <!-- PAGE 3 GIFT -->
+
+        <section
+            class="page"
+            id="page3"
+        >
+
+            <div class="eyebrow">
+                littel surprise 🎁
+            </div>
+
+            <h2>
+                Ada hadiah buat kamu.
+            </h2>
+
+            <p class="text">
+                Coba buka kotaknya.
+            </p>
+
+
+            <div
+                class="giftScene"
+                onclick="openGift()"
+            >
+
+                <div
+                    class="giftBox"
+                    id="gift"
+                >
+
+                    <div class="giftBow">
+
+                        <div class="bowLeft"></div>
+
+                        <div class="bowRight"></div>
+
+                        <div class="bowCenter"></div>
+
+                    </div>
+
+
+                    <div class="giftLid"></div>
+
+
+                    <div class="giftBase"></div>
+
+
+                    <div class="giftRibbonFront"></div>
+
+                </div>
+
+            </div>
+
+
+            <div id="giftResult"></div>
+
+
+            <button
+                class="btn hidden"
+                id="giftNext"
+                onclick="nextPage()"
+            >
+                Lanjutt 😭 →
+            </button>
+
+        </section>
+
+
+        <!-- PAGE 4 HEART GAME -->
+
+        <section
+            class="page"
+            id="page4"
+        >
+
+            <div class="eyebrow">
+                mini game #01
+            </div>
+
+            <h2>
+                Tangkap hati! 💗
+            </h2>
+
+            <p class="text">
+                Tap hati yang lewat.
+            </p>
+
+            <div class="score">
+                Hearts:
+                <span id="heartScore">0</span>
+                /10
+            </div>
+
+            <div
+                class="gameArea"
+                id="gameArea"
+            ></div>
+
+            <button
+                class="btn"
+                id="startGame"
+                onclick="startHeartGame()"
+            >
+                Mulai game 🎮
+            </button>
+
+            <button
+                class="btn hidden"
+                id="gameNext"
+                onclick="nextPage()"
+            >
+                Lanjuttt →
+            </button>
+
+        </section>
+
+
+        <!-- PAGE 5 GALLERY -->
+
+        <section
+            class="page"
+            id="page5"
+        >
+
+            <div class="eyebrow">
+                our little memories 📸
+            </div>
+
+            <h2 class="galleryTitle">
+                Little moments,<br>
+                big memories.
+            </h2>
+
+            <p class="text">
+                Tap fotonya kalau mau melihat
+                lebih dekat. 🤍
+            </p>
+
+            <div class="galleryWrap">
+
+                <div
+                    class="photoCard"
+                    id="photoCard"
+                    onclick="openPhoto()"
+                >
+
+                    <img
+                        id="galleryImage"
+                        src=""
+                        alt="Memory"
+                    >
+
+                    <div
+                        class="photoCaption"
+                        id="galleryCaption"
+                    ></div>
+
+                    <div
+                        class="photoNumber"
+                        id="photoNumber"
+                    ></div>
+
+                </div>
+
+            </div>
+
+            <div class="galleryControls">
+
+                <button
+                    class="arrow"
+                    onclick="previousPhoto()"
+                >
+                    ‹
+                </button>
+
+                <div
+                    class="dots"
+                    id="dots"
+                ></div>
+
+                <button
+                    class="arrow"
+                    onclick="nextPhoto()"
+                >
+                    ›
+                </button>
+
+            </div>
+
+            <div class="tapHint">
+                TAP FOTO UNTUK MEMPERBESAR ✦
+            </div>
+
+            <button
+                class="btn"
+                onclick="nextPage()"
+            >
+                Lanjut ke surat 💌
+            </button>
+
+        </section>
+
+
+        <!-- PAGE 6 LETTER -->
+
+        <section
+            class="page"
+            id="page6"
+        >
+
+            <div class="envelope">
+                💌
+            </div>
+
+            <div class="eyebrow">
+                a little letter
+            </div>
+
+            <div class="note">
+
+                <h2>
+                    Dear
+                    <span id="nameB">
+                        you
+                    </span>,
+                </h2>
+
+                <p id="typedLetter"></p>
+
+            </div>
+
+            <button
+                class="btn"
+                id="letterBtn"
+                onclick="startTyping()"
+            >
+                Buka suratnya 💌
+            </button>
+
+            <button
+                class="btn hidden"
+                id="letterNext"
+                onclick="nextPage()"
+            >
+                Jadi malu 😭 →
+            </button>
+
+        </section>
+
+
+        <!-- PAGE 7 QUIZ -->
+
+        <section
+            class="page"
+            id="page7"
+        >
+
+            <div class="eyebrow">
+                mini game #02
+            </div>
+
+            <h2>
+                SURVEEYY DULUU<br>
+                BENTARR
+            </h2>
+
+            <div class="card">
+
+                <div
+                    class="question"
+                    id="question"
+                ></div>
+
+                <div
+                    class="answers"
+                    id="answers"
+                ></div>
+
+                <div
+                    id="quizResult"
+                    class="text"
+                ></div>
+
+            </div>
+
+            <button
+                class="btn hidden"
+                id="quizNext"
+                onclick="nextPage()"
+            >
+                lanjut 😭 →
+            </button>
+
+        </section>
+
+
+        <!-- PAGE 8 MYSTERY -->
+
+        <section
+            class="page"
+            id="page8"
+        >
+
+            <div class="eyebrow">
+                mystery surprise
+            </div>
+
+            <h2>
+                Pilih satu. 👀
+            </h2>
+
+            <p class="text">
+                Salah satunya menyimpan pesan
+                rahasia untuk kamu.
+            </p>
+
+            <div class="boxes">
+
+                <button
+                    class="mystery"
+                    onclick="chooseMystery(this,0)"
+                >
+                    🎁
+                </button>
+
+                <button
+                    class="mystery"
+                    onclick="chooseMystery(this,1)"
+                >
+                    🎁
+                </button>
+
+                <button
+                    class="mystery"
+                    onclick="chooseMystery(this,2)"
+                >
+                    🎁
+                </button>
+
+            </div>
+
+            <div
+                id="mysteryResult"
+                class="text"
+            ></div>
+
+            <button
+                class="btn hidden"
+                id="mysteryNext"
+                onclick="nextPage()"
+            >
+                lanjut 👀 →
+            </button>
+
+        </section>
+
+
+        <!-- PAGE 9 -->
+
+        <section
+            class="page"
+            id="page9"
+        >
+
+            <div class="eyebrow">
+                Kalau berhasil
+            </div>
+
+            <h2>
+                Klik tombol putih<br>
+                nanti aku beliin es krim
+            </h2>
+
+            <p class="text">
+                Serius.
+            </p>
+
+            <div class="runaway">
+
+                <button
+                    class="noBtn"
+                    id="noBtn"
+                    onclick="runaway()"
+                >
+                    FREE ES KRIMM
+                </button>
+
+            </div>
+
+            <button
+                class="btn"
+                onclick="nextPage()"
+            >
+                Menyerah 😇
+            </button>
+
+        </section>
+
+
+        <!-- PAGE 10 WISH -->
+
+        <section
+            class="page"
+            id="page10"
+        >
+
+            <div class="eyebrow">
+                make a wish ✨
+            </div>
+
+            <h2>
+                Tulis satu harapan<br>
+                buat tahun ini.
+            </h2>
+
+            <textarea
+                id="wish"
+                placeholder="Aku berharap..."
+            ></textarea>
+
+            <button
+                class="btn"
+                onclick="saveWish()"
+            >
+                Simpan harapan ✨
+            </button>
+
+            <div
+                id="wishResult"
+                class="text"
+            ></div>
+
+            <button
+                class="btn hidden"
+                id="wishNext"
+                onclick="nextPage()"
+            >
+                lanjut 🎀
+            </button>
+
+        </section>
+
+
+        <!-- PAGE 11 ACHIEVEMENTS -->
+
+        <section
+            class="page"
+            id="page11"
+        >
+
+            <div class="eyebrow">
+                achievement unlocked 🏆
+            </div>
+
+            <h2>
+                Kamu berhasil<br>
+                sampai sejauh ini!
+            </h2>
+
+            <div class="achievements">
+
+                <div class="badge">
+                    <b>🔐</b>
+                    <small>PIN MASTER</small>
+                </div>
+
+                <div class="badge">
+                    <b>🎁</b>
+                    <small>GIFT OPENER</small>
+                </div>
+
+                <div class="badge">
+                    <b>💗</b>
+                    <small>HEART CATCHER</small>
+                </div>
+
+                <div class="badge">
+                    <b>📸</b>
+                    <small>MEMORY KEEPER</small>
+                </div>
+
+                <div class="badge">
+                    <b>💌</b>
+                    <small>LETTER READER</small>
+                </div>
+
+                <div class="badge">
+                    <b>🎂</b>
+                    <small>PRETTY GIRL</small>
+                </div>
+
+            </div>
+
+            <button
+                class="btn"
+                onclick="nextPage()"
+            >
+                Ruangan terakhir... 🔓
+            </button>
+
+        </section>
+
+
+        <!-- PAGE 12 MUSIC + FINAL -->
+
+        <section
+            class="page"
+            id="page12"
+        >
+
+            <div class="finalHeart">
+                💗
+            </div>
+
+            <div class="eyebrow">
+                secret room unlocked
+            </div>
+
+            <h1 class="title">
+                This one is<br>
+                <span>for you.</span>
+            </h1>
+
+
+            <!-- SPOTIFY PLAYER -->
+
+            <div class="spotifyCard">
+
+                <div class="musicTop">
+
+                    <div class="albumCover">
+                        💗
+                    </div>
+
+                    <div class="songInfo">
+
+                        <b id="songTitle">
+                            Best Part
+                        </b>
+
+                        <small id="songArtist">
+                            For Someone Special ♡
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="musicProgress">
+
+                    <div
+                        class="musicProgressFill"
+                        id="musicProgress"
+                    ></div>
+
+                </div>
+
+
+                <div class="timeRow">
+
+                    <span id="currentTime">
+                        0:00
+                    </span>
+
+                    <span id="duration">
+                        0:00
+                    </span>
+
+                </div>
+
+
+                <div class="musicControls">
+
+                    <button
+                        class="musicControl"
+                        onclick="restartMusic()"
+                    >
+                        ↺
+                    </button>
+
+                    <button
+                        class="musicControl main"
+                        id="playMain"
+                        onclick="toggleMusic()"
+                    >
+                        ▶
+                    </button>
+
+                    <button
+                        class="musicControl"
+                        onclick="skipMusic(10)"
+                    >
+                        +10
+                    </button>
+
+                </div>
+
+
+                <!-- LYRICS -->
+
+                <div
+                    class="lyricsBox"
+                    id="lyricsBox"
+                >
+
+                    <div
+                        class="lyricsTrack"
+                        id="lyricsTrack"
+                    ></div>
+
+                </div>
+
+
+                <div class="lyricHint">
+                    ✦ lyrics akan mengikuti lagu
+                </div>
+
+            </div>
+
+
+            <div class="finalMessage">
+
+                <p>
+                     Bluu, makasih ya udah hadir dan jadi bagian dari hari-hariku. 
+                  Mungkin buat kamu hal-hal kecil yang kita lakuin bareng itu biasa aja, 
+                  tapi buat aku, semuanya punya kesan tersendiri yang bakal selalu aku inget.
+                </p>
+
+                <p>
+                    Lucu ya, terkadang hal sederhana 
+                  justru jadi sesuatu yang paling berkesan.
+                  Obrolan random, tawa karena hal nggak penting, 
+                  sampai cerita-cerita kecil yang tanpa sadar bikin hari terasa
+                  lebih menyenangkan.
+                </p>
+
+                <p>
+                    Aku nggak berharap semuanya harus selalu sempurna. 
+                  Aku cuma berharap kita bisa terus saling bikin nyaman, 
+                  saling menghargai, dan punya banyak alasan buat ketawa 
+                  bareng.
+                </p>
+
+                <p>
+                    Semoga dunia selalu baik sama kamu,
+                  langkahmu dimudahkan, dan hal-hal baik selalu menemukan
+                  jalannya buat sampai ke kamu. Kalau suatu hari semuanya terasa berat,
+                  nggak apa-apa buat istirahat sebentar. Kamu nggak harus selalu terlihat
+                  kuat di depan semua orang.
+                </p>
+
+                <p>
+                    Jangan lupa bahagia yaa, Blu.
+                  Jangan terlalu keras sama diri sendiri,
+                  dan tetap jadi kamu yang punya caranya sendiri
+                  buat bikin hari-hari terasa lebih berwarna. Aku harap,
+                  di antara banyaknya hal yang kamu temui setiap hari, selalu
+                  ada sesuatu yang bisa bikin kamu tersenyum. Jaga diri baik-baik, yaa. 🤍
+                </p>
+
+                <p>
+                    Dan semoga kamu selalu tahu...
+                </p>
+
+                <p>
+                    <b>
+                        aku mencintai mu
+                    </b>
+                </p>
+
+            </div>
+
+
+            <button
+                class="btn"
+                onclick="celebrate()"
+            >
+                 You are...
+            </button>
+
+
+            <div
+                id="finalText"
+                class="text hidden"
+                style="
+                    color:#d8719b;
+                    font-weight:800;
+                "
+            >
+
+                My Love,
+                <span id="nameFinal"></span>. 🤍
+
+                <br><br>
+
+                Maafin yah beberapa hari ini aku agak nggak jelas, soalnya lagi fokus bikin ginian.
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- =====================================================
+     SLIDE NAVIGATION
+===================================================== -->
+
+<div
+    class="slideNavigation"
+    id="slideNavigation"
+>
+
+    <button
+        class="navBtn"
+        onclick="previousPage()"
+    >
+        ← BACK
+    </button>
+
+    <div
+        class="navCenter"
+        id="navCenter"
+    >
+        1 / 12
+    </div>
+<button
+    class="navBtn"
+    onclick="nextPage()"
+>
+    NEXT →
+</button>
+    
+
+</div>
+
+
+<!-- =====================================================
+     PHOTO POPUP
+===================================================== -->
+
+<div
+    class="photoPopup"
+    id="photoPopup"
+    onclick="closePhoto(event)"
+>
+
+    <div class="popupInner">
+
+        <img
+            id="popupImage"
+            src=""
+            alt="Memory"
+        >
+
+        <button
+            class="closePopup"
+            onclick="closePhoto()"
+        >
+            ×
+        </button>
+
+    </div>
+
+</div>
+
+
+<div
+    class="toast"
+    id="toast"
+></div>
+
+
+<script>
+
+/* =====================================================
+   CONFIG
+===================================================== */
+
+const CONFIG = {
+
+    nama:
+        "Cleoo",
+
+    pin:
+        "250209",
+
+
+    /* FOTO SAAT HADIAH DIBUKA */
+
+    giftPhotos:[
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg",
+        "gift1.jpg"
+    ],
+
+
+    /* FOTO GALERI */
+
+    galleryPhotos:[
+
+        {
+            src:"memory1.jpg",
+            caption:
+                "Ini dirimuu yang cantikkk 💐"
+        },
+
+        {
+            src:"memory2.jpg",
+            caption:
+                "Ini diriku yang gantenggg ✨"
+        },
+
+        {
+            src:"memory3.jpg",
+            caption:
+                "Dari awal ketemu, aku ngga nyangka bisa sedeket ini 🤍"
+        },
+
+        {
+            src:"memory4.jpg",
+            caption:
+                "Ini sumpah resek banget😭"
+        },
+
+        {
+            src:"memory5.jpg",
+            caption:
+                "😭😭😭🙏"
+        }
+
+    ],
+
+
+    /* QUIZ */
+
+    quiz:[
+
+        {
+            q:
+                "ZIZI GANTENG APA NGGAAA...",
+
+            a:[
+                "KEMBARAN TOM HOLLAND 🤭",
+                "GANTENGGG BNGTTTT 😎",
+                "GNTNG SIHHH 😜"
+            ],
+
+            correct:0
+        },
+
+        {
+            q:
+                "CLEOO MAU MAAFIN ZIZI...?",
+
+            a:[
+                "BAD MOD BNGT",
+                "IYAAH MAU",
+                "IYA, TAPI BOONG"
+            ],
+
+            correct:1
+        },
+
+        {
+            q:
+                "SABTU MAU JALAN BARENG...?",
+
+            a:[
+                "MAUU",
+                "GK",
+                "G"
+            ],
+
+            correct:0
+        }
+
+    ]
+
+};
+
+
+/* =====================================================
+   MANUAL LYRICS
+   =====================================================
+
+   Kamu tinggal ganti teks + timestamp.
+
+   Contoh:
+
+   {
+       time: 0,
+       text: "Intro..."
+   }
+
+   time = detik lagu mulai bagian tersebut.
+
+===================================================== */
+
+const LYRICS = [
+
+    {
+        time:0,
+        text:"♪ You're my sunshine in the rain when it's pouring ♡"
+    },
+
+    {
+        time:2.5,
+        text:"won't you give yourself to me?"
+    },
+
+    {
+        time:4.5,
+        text:"Give it all, oh"
+    },
+
+    {
+        time:8.5,
+        text:"I just wanna see"
+    },
+
+    {
+        time:10,
+        text:"I just wanna see how beautiful you are"
+    },
+
+    {
+        time:17,
+        text:"You know that i see it"
+
+    },
+    
+    {
+        time:20,
+        text:"I know you're star✨"
+
+    },
+    
+    {
+        time:23,
+        text:"Where you go, i'ii follow"
+
+    },
+    
+    {
+        time:26,
+        text:"No matter how far"
+
+    },
+    
+    {
+        time:29,
+        text:"If life is movie"
+
+    },
+    
+    {
+        time:33,
+        text:"Oh, you're the best part"
+
+    },
+    
+    {
+        time:37,
+        text:"Oh, you're the best part"
+
+    },
+    
+    {
+        time:42,
+        text:"Oh, best part"
+
+    },
+
+    {
+        time:49,
+        text:"It's this sunrise"
+
+    },
+    
+    {
+        time:,
+        text:""
+
+    },
+    
+];
+
+
+/* =====================================================
+   STATE
+===================================================== */
+
+let enteredPin="";
+
+let currentPage=1;
+
+let happiness=10;
+
+let mascotTap=0;
+
+let memoryIndex=0;
+
+let quizIndex=0;
+
+let heartScore=0;
+
+let heartTimer=null;
+
+let heartSpawner=null;
+
+let heartGameRunning=false;
+
+let typingStarted=false;
+
+let mysteryDone=false;
+
+let runawayCount=0;
+
+let giftOpened=false;
+
+let activeLyric=-1;
+
+
+/* =====================================================
+   ELEMENTS
+===================================================== */
+
+const music =
+    document.getElementById(
+        "bgMusic"
+    );
+
+const musicButton =
+    document.getElementById(
+        "musicButton"
+    );
+
+const playMain =
+    document.getElementById(
+        "playMain"
+    );
+
+const musicProgress =
+    document.getElementById(
+        "musicProgress"
+    );
+
+const currentTimeEl =
+    document.getElementById(
+        "currentTime"
+    );
+
+const durationEl =
+    document.getElementById(
+        "duration"
+    );
+
+const lyricsBox =
+    document.getElementById(
+        "lyricsBox"
+    );
+
+const lyricsTrack =
+    document.getElementById(
+        "lyricsTrack"
+    );
+
+
+/* =====================================================
+   LYRICS SETUP
+===================================================== */
+
+function loadLyrics(){
+
+    lyricsTrack.innerHTML="";
+
+    LYRICS.forEach(
+        (lyric,index)=>{
+
+            const line =
+                document.createElement(
+                    "div"
+                );
+
+            line.className=
+                "lyricLine";
+
+            line.dataset.index=
+                index;
+
+            line.textContent=
+                lyric.text;
+
+            lyricsTrack.appendChild(
+                line
+            );
+
+        }
+    );
+
+}
+
+
+function updateLyrics(){
+
+    if(
+        !LYRICS.length
+    ){
+
+        return;
+
+    }
+
+
+    const time =
+        music.currentTime;
+
+
+    let index=-1;
+
+
+    for(
+        let i=0;
+        i<LYRICS.length;
+        i++
+    ){
+
+        if(
+            time>=
+            LYRICS[i].time
+        ){
+
+            index=i;
+
+        }
+
+        else{
+
+            break;
+
+        }
+
+    }
+
+
+    if(
+        index===-1 ||
+        index===activeLyric
+    ){
+
+        return;
+
+    }
+
+
+    activeLyric=index;
+
+
+    const lines =
+        document.querySelectorAll(
+            ".lyricLine"
+        );
+
+
+    lines.forEach(
+        line=>{
+            line.classList.remove(
+                "active"
+            );
+        }
+    );
+
+
+    const active =
+        lines[index];
+
+
+    if(
+        !active
+    ){
+
+        return;
+
+    }
+
+
+    active.classList.add(
+        "active"
+    );
+
+
+    /*
+       PENTING:
+
+       Yang di-scroll hanya lyricsBox.
+
+       BUKAN window.
+
+       Jadi halaman utama tidak
+       akan ketarik ke lirik.
+    */
+
+    const target =
+        active.offsetTop
+        -
+        lyricsBox.clientHeight / 2
+        +
+        active.offsetHeight / 2;
+
+
+    lyricsBox.scrollTo({
+
+        top:target,
+
+        behavior:"smooth"
+
+    });
+
+}
+
+
+/* =====================================================
+   MUSIC
+===================================================== */
+
+function startMusic(){
+
+    music.volume=.45;
+
+
+    music.play()
+
+        .then(()=>{
+
+            musicButton
+                .classList
+                .add("show");
+
+
+            musicButton
+                .classList
+                .add("playing");
+
+
+            musicButton.textContent=
+                "🎵";
+
+
+            playMain.textContent=
+                "Ⅱ";
+
+        })
+
+        .catch(()=>{
+
+            musicButton
+                .classList
+                .add("show");
+
+
+            musicButton.textContent=
+                "🔇";
+
+
+            playMain.textContent=
+                "▶";
+
+        });
+
+}
+
+
+function toggleMusic(){
+
+    if(
+        music.paused
+    ){
+
+        music.play()
+
+            .then(()=>{
+
+                musicButton
+                    .classList
+                    .add("show");
+
+                musicButton
+                    .classList
+                    .add("playing");
+
+                musicButton.textContent=
+                    "🎵";
+
+                playMain.textContent=
+                    "Ⅱ";
+
+            })
+
+            .catch(()=>{
+
+                toast(
+                    "Pencet musiknya sekali lagi 🎵"
+                );
+
+            });
+
+    }
+
+    else{
+
+        music.pause();
+
+
+        musicButton
+            .classList
+            .remove("playing");
+
+
+        musicButton.textContent=
+            "🔇";
+
+
+        playMain.textContent=
+            "▶";
+
+    }
+
+}
+
+
+function restartMusic(){
+
+    music.currentTime=0;
+
+    activeLyric=-1;
+
+    updateLyrics();
+
+    music.play();
+
+}
+
+
+function skipMusic(seconds){
+
+    music.currentTime += seconds;
+
+}
+
+
+function formatTime(seconds){
+
+    if(
+        !isFinite(seconds)
+    ){
+
+        return "0:00";
+
+    }
+
+
+    const min =
+        Math.floor(
+            seconds/60
+        );
+
+
+    const sec =
+        Math.floor(
+            seconds%60
+        )
+        .toString()
+        .padStart(
+            2,
+            "0"
+        );
+
+
+    return min+":"+sec;
+
+}
+
+
+music.addEventListener(
+    "loadedmetadata",
+    ()=>{
+
+        durationEl.textContent=
+            formatTime(
+                music.duration
+            );
+
+    }
+);
+
+
+music.addEventListener(
+    "timeupdate",
+    ()=>{
+
+        const percent =
+            music.duration
+            ?
+            (
+                music.currentTime /
+                music.duration
+            ) * 100
+            :
+            0;
+
+
+        musicProgress.style.width=
+            percent+"%";
+
+
+        currentTimeEl.textContent=
+            formatTime(
+                music.currentTime
+            );
+
+
+        updateLyrics();
+
+    }
+);
+
+
+music.addEventListener(
+    "play",
+    ()=>{
+
+        playMain.textContent="Ⅱ";
+
+        musicButton
+            .classList
+            .add("playing");
+
+    }
+);
+
+
+music.addEventListener(
+    "pause",
+    ()=>{
+
+        playMain.textContent="▶";
+
+        musicButton
+            .classList
+            .remove("playing");
+
+    }
+);
+
+
+/* =====================================================
+   PIN
+===================================================== */
+
+function keyPress(n){
+
+    if(
+        enteredPin.length>=6
+    ){
+
+        return;
+
+    }
+
+
+    enteredPin+=n;
+
+    updatePin();
+
+
+    if(
+        enteredPin.length===6
+    ){
+
+        setTimeout(
+            checkPin,
+            220
+        );
+
+    }
+
+}
+
+
+function deleteKey(){
+
+    enteredPin=
+        enteredPin.slice(0,-1);
+
+    updatePin();
+
+}
+
+
+function updatePin(){
+
+    const dots=
+        document.querySelectorAll(
+            ".pinDot"
+        );
+
+
+    dots.forEach(
+        (dot,i)=>{
+
+            if(
+                i<
+                enteredPin.length
+            ){
+
+                dot.textContent="●";
+
+                dot.classList.add(
+                    "filled"
+                );
+
+            }
+
+            else{
+
+                dot.textContent="○";
+
+                dot.classList.remove(
+                    "filled"
+                );
+
+            }
+
+        }
+    );
+
+}
+
+
+function checkPin(){
+
+    const error=
+        document.getElementById(
+            "pinError"
+        );
+
+
+    if(
+        enteredPin===
+        CONFIG.pin
+    ){
+
+        unlock();
+
+    }
+
+    else{
+
+        error.textContent=
+            "Hmm... bukan itu 😭 coba lagi.";
+
+        enteredPin="";
+
+        updatePin();
+
+    }
+
+}
+
+
+function unlock(){
+
+    startMusic();
+
+
+    const lock=
+        document.getElementById(
+            "lockScreen"
+        );
+
+
+    lock.style.transition=
+        ".6s";
+
+    lock.style.opacity=
+        "0";
+
+    lock.style.transform=
+        "scale(.94)";
+
+
+    setTimeout(()=>{
+
+        lock.style.display=
+            "none";
+
+
+        document
+            .getElementById(
+                "main"
+            )
+            .classList
+            .remove("hidden");
+
+
+        document
+            .getElementById(
+                "nameA"
+            )
+            .textContent=
+            CONFIG.nama;
+
+
+        document
+            .getElementById(
+                "nameB"
+            )
+            .textContent=
+            CONFIG.nama;
+
+
+        document
+            .getElementById(
+                "nameFinal"
+            )
+            .textContent=
+            CONFIG.nama;
+
+
+        loadGallery();
+
+        loadQuiz();
+
+        loadLyrics();
+
+        updateProgress();
+
+        showNavigation();
+
+
+        toast(
+            "Welcome, cute girl 🎀"
+        );
+
+
+    },600);
+
+}
+
+
+/* =====================================================
+   PAGE NAVIGATION
+===================================================== */
+
+function nextPage(){
+
+    if(
+        currentPage>=12
+    ){
+
+        return;
+
+    }
+
+
+    document
+        .getElementById(
+            "page"+
+            currentPage
+        )
+        .classList
+        .remove("active");
+
+
+    currentPage++;
+
+
+    document
+        .getElementById(
+            "page"+
+            currentPage
+        )
+        .classList
+        .add("active");
+
+
+    updateProgress();
+
+
+    updateNavigation();
+
+
+    /*
+       Jangan menggunakan window.scrollTo
+       untuk navigasi lirik.
+
+       Ini hanya reset halaman ketika
+       pindah slide.
+    */
+
+    window.scrollTo({
+        top:0,
+        behavior:"instant"
+    });
+
+}
+
+
+function previousPage(){
+
+    if(
+        currentPage<=1
+    ){
+
+        return;
+
+    }
+
+
+    document
+        .getElementById(
+            "page"+
+            currentPage
+        )
+        .classList
+        .remove("active");
+
+
+    currentPage--;
+
+
+    document
+        .getElementById(
+            "page"+
+            currentPage
+        )
+        .classList
+        .add("active");
+
+
+    updateProgress();
+
+    updateNavigation();
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"instant"
+    });
+
+}
+
+
+function updateProgress(){
+
+    const percent=
+        ((currentPage-1)/11)*100;
+
+
+    document
+        .getElementById(
+            "progress"
+        )
+        .style.width=
+        percent+"%";
+
+
+    document
+        .getElementById(
+            "level"
+        )
+        .textContent=
+        "LV. "+
+        currentPage;
+
+
+    document
+        .getElementById(
+            "navCenter"
+        )
+        .textContent=
+        currentPage+
+        " / 12";
+
+}
+
+
+function showNavigation(){
+
+    document
+        .getElementById(
+            "slideNavigation"
+        )
+        .classList
+        .add("show");
+
+}
+
+
+function updateNavigation(){
+
+    const back=
+        document.querySelector(
+            ".slideNavigation .navBtn:first-child"
+        );
+
+
+    const next=
+        document.querySelector(
+            ".slideNavigation .navBtn:last-child"
+        );
+
+
+    back.style.visibility=
+        currentPage===1
+        ?
+        "hidden"
+        :
+        "visible";
+
+
+    next.style.visibility=
+        currentPage===12
+        ?
+        "hidden"
+        :
+        "visible";
+
+}
+
+
+/* =====================================================
+   HAPPINESS
+===================================================== */
+
+function addHappiness(amount){
+
+    happiness+=amount;
+
+
+    if(
+        happiness>100
+    ){
+
+        happiness=100;
+
+    }
+
+
+    document
+        .getElementById(
+            "meter"
+        )
+        .style.width=
+        happiness+"%";
+
+
+    document
+        .getElementById(
+            "meterText"
+        )
+        .textContent=
+        happiness+"%";
+
+}
+
+
+/* =====================================================
+   MASCOT
+===================================================== */
+
+const mascotMessages=[
+
+    "hehe pencet aku lagi 👀",
+
+    "ih kamu gemes 😭",
+
+    "aku tahu kamu penasaran.",
+
+    "jangan spam aku 😭",
+
+    "oke oke aku senang."
+
+];
+
+
+function tapMascot(){
+
+    mascotTap++;
+
+
+    const bubble=
+        document.getElementById(
+            "mascotBubble"
+        );
+
+
+    bubble.textContent=
+        mascotMessages[
+            mascotTap %
+            mascotMessages.length
+        ];
+
+
+    addHappiness(3);
+
+
+    if(
+        mascotTap===5
+    ){
+
+        createHearts(8);
+
+        toast(
+            "Achievement: Mascot Friend 🐰"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   ROOM
+===================================================== */
+
+function roomClick(type){
+
+    addHappiness(5);
+
+
+    const messages={
+
+        gift:
+            "HEHEHEE KADONYA ADA DI SLIDE BERIKUTNYAA 🎁",
+
+        cake:
+            "KUE NYAA NGGAA SENGAJA KEMAKANN 😭🎂",
+
+        bear:
+            "Kamu dapat salam dari boneka 🧸",
+
+        letter:
+            "SURAT APA NYAAKK 💌",
+
+        photo:
+            "FOTOO APAA NYAAAK 📸",
+
+        star:
+            "RAHASIAA, KEPO LUU ⭐"
+
+    };
+
+
+    toast(
+        messages[type]
+    );
+
+
+    createHearts(2);
+
+}
+
+
+/* =====================================================
+   GIFT
+===================================================== */
+
+function openGift(){
+
+    if(
+        giftOpened
+    ){
+
+        return;
+
+    }
+
+
+    giftOpened=true;
+
+
+    const gift=
+        document.getElementById(
+            "gift"
+        );
+
+
+    gift.classList.add(
+        "open"
+    );
+
+
+    const photos=
+        CONFIG.giftPhotos;
+
+
+    const giftRect=
+        gift.getBoundingClientRect();
+
+
+    const startX=
+        giftRect.left+
+        giftRect.width/2;
+
+
+    const startY=
+        giftRect.top+
+        giftRect.height/2;
+
+
+    photos.forEach(
+        (photo,index)=>{
+
+            setTimeout(()=>{
+
+                const img=
+                    document.createElement(
+                        "img"
+                    );
+
+
+                img.className=
+                    "flying-photo";
+
+
+                img.src=
+                    photo;
+
+
+                img.style.left=
+                    startX+
+                    "px";
+
+
+                img.style.top=
+                    startY+
+                    "px";
+
+
+                const x=
+                    Math.random()*
+                    300-
+                    150;
+
+
+                const y=
+                    -(
+                        Math.random()*
+                        330+
+                        180
+                    );
+
+
+                const rotation=
+                    Math.random()*
+                    50-
+                    25;
+
+
+                img.style.setProperty(
+                    "--x",
+                    x+"px"
+                );
+
+
+                img.style.setProperty(
+                    "--y",
+                    y+"px"
+                );
+
+
+                img.style.setProperty(
+                    "--rotate",
+                    rotation+"deg"
+                );
+
+
+                document
+                    .body
+                    .appendChild(
+                        img
+                    );
+
+
+                setTimeout(()=>{
+
+                    img.style.transition=
+                        "1s ease";
+
+                    img.style.opacity=
+                        "0";
+
+
+                    setTimeout(()=>{
+
+                        img.remove();
+
+                    },1000);
+
+                },2200);
+
+
+            },index*180);
+
+        }
+    );
+
+
+    setTimeout(()=>{
+
+        document
+            .getElementById(
+                "giftResult"
+            )
+            .innerHTML=`
+
+                <div class="card">
+
+                    <div style="
+                        font-size:40px;
+                        margin-bottom:8px;
+                    ">
+                        💗
+                    </div>
+
+                    <b>
+                        Surpriseee!
+                    </b>
+
+                    <p class="text">
+
+                        Awokawokawoka,
+                        Apaan tuhhh keluar
+                        dari kotakk barusan. 
+
+                    </p>
+
+                </div>
+
+            `;
+
+
+        document
+            .getElementById(
+                "giftNext"
+            )
+            .classList
+            .remove("hidden");
+
+
+        addHappiness(15);
+
+        createHearts(18);
+
+    },900);
+
+}
+
+
+/* =====================================================
+   HEART GAME
+===================================================== */
+
+function startHeartGame(){
+
+    if(
+        heartGameRunning
+    ){
+
+        return;
+
+    }
+
+
+    heartGameRunning=true;
+
+    heartScore=0;
+
+
+    const area=
+        document.getElementById(
+            "gameArea"
+        );
+
+
+    document
+        .getElementById(
+            "heartScore"
+        )
+        .textContent="0";
+
+
+    document
+        .getElementById(
+            "startGame"
+        )
+        .classList
+        .add("hidden");
+
+
+    area.innerHTML="";
+
+
+    toast(
+        "Tangkap semua hatinya! 💗"
+    );
+
+
+    spawnHeart();
+
+
+    heartSpawner=
+        setInterval(()=>{
+
+            if(
+                heartGameRunning
+            ){
+
+                spawnHeart();
+
+            }
+
+        },500);
+
+
+    heartTimer=
+        setTimeout(
+            finishHeartGame,
+            15000
+        );
+
+}
+
+
+function spawnHeart(){
+
+    if(
+        !heartGameRunning
+    ){
+
+        return;
+
+    }
+
+
+    const area=
+        document.getElementById(
+            "gameArea"
+        );
+
+
+    const heart=
+        document.createElement(
+            "button"
+        );
+
+
+    heart.type="button";
+
+    heart.className=
+        "gameHeart";
+
+
+    const symbols=[
+        "💗",
+        "💖",
+        "💕",
+        "💓",
+        "💘"
+    ];
+
+
+    heart.textContent=
+        symbols[
+            Math.floor(
+                Math.random()*
+                symbols.length
+            )
+        ];
+
+
+    const maxX=
+        Math.max(
+            10,
+            area.clientWidth-45
+        );
+
+
+    heart.style.left=
+        Math.random()*
+        maxX+
+        "px";
+
+
+    heart.style.bottom="-40px";
+
+
+    heart.onclick=
+        function(e){
+
+            e.preventDefault();
+
+            e.stopPropagation();
+
+
+            if(
+                !heartGameRunning
+            ){
+
+                return;
+
+            }
+
+
+            heartScore++;
+
+
+            document
+                .getElementById(
+                    "heartScore"
+                )
+                .textContent=
+                heartScore;
+
+
+            heart.remove();
+
+
+            if(
+                heartScore>=10
+            ){
+
+                finishHeartGame();
+
+            }
+
+        };
+
+
+    area.appendChild(
+        heart
+    );
+
+
+    setTimeout(()=>{
+
+        if(
+            heart.isConnected
+        ){
+
+            heart.remove();
+
+        }
+
+    },2200);
+
+}
+
+
+function finishHeartGame(){
+
+    if(
+        !heartGameRunning
+    ){
+
+        return;
+
+    }
+
+
+    heartGameRunning=false;
+
+
+    clearInterval(
+        heartSpawner
+    );
+
+
+    clearTimeout(
+        heartTimer
+    );
+
+
+    document
+        .getElementById(
+            "gameNext"
+        )
+        .classList
+        .remove("hidden");
+
+
+    if(
+        heartScore>=10
+    ){
+
+        toast(
+            "MAKASIHH UDAH NANGKAP HATI KU! 💗"
+        );
+
+
+        addHappiness(20);
+
+        createHearts(15);
+
+    }
+
+    else{
+
+        toast(
+            "Kamu berhasil menangkap "+
+            heartScore+
+            " hati! 💕"
+        );
+
+
+        addHappiness(10);
+
+    }
+
+}
+
+
+/* =====================================================
+   GALLERY
+===================================================== */
+
+function loadGallery(){
+
+    renderDots();
+
+    showPhoto();
+
+}
+
+
+function showPhoto(){
+
+    const photo=
+        CONFIG.galleryPhotos[
+            memoryIndex
+        ];
+
+
+    document
+        .getElementById(
+            "galleryImage"
+        )
+        .src=
+        photo.src;
+
+
+    document
+        .getElementById(
+            "galleryCaption"
+        )
+        .textContent=
+        photo.caption;
+
+
+    document
+        .getElementById(
+            "photoNumber"
+        )
+        .textContent=
+        "MEMORY "+
+        String(
+            memoryIndex+1
+        )
+        .padStart(
+            2,
+            "0"
+        );
+
+
+    renderDots();
+
+}
+
+
+function renderDots(){
+
+    const dots=
+        document.getElementById(
+            "dots"
+        );
+
+
+    dots.innerHTML="";
+
+
+    CONFIG.galleryPhotos.forEach(
+        (_,i)=>{
+
+            const dot=
+                document.createElement(
+                    "div"
+                );
+
+
+            dot.className=
+                "dot"+
+                (
+                    i===
+                    memoryIndex
+                    ?
+                    " active"
+                    :
+                    ""
+                );
+
+
+            dots.appendChild(
+                dot
+            );
+
+        }
+    );
+
+}
+
+
+function nextPhoto(){
+
+    memoryIndex++;
+
+
+    if(
+        memoryIndex>=
+        CONFIG.galleryPhotos.length
+    ){
+
+        memoryIndex=0;
+
+    }
+
+
+    showPhoto();
+
+    addHappiness(3);
+
+}
+
+
+function previousPhoto(){
+
+    memoryIndex--;
+
+
+    if(
+        memoryIndex<0
+    ){
+
+        memoryIndex=
+            CONFIG.galleryPhotos.length-1;
+
+    }
+
+
+    showPhoto();
+
+}
+
+
+function openPhoto(){
+
+    const popup=
+        document.getElementById(
+            "photoPopup"
+        );
+
+
+    const img=
+        document.getElementById(
+            "popupImage"
+        );
+
+
+    img.src=
+        CONFIG
+            .galleryPhotos[
+                memoryIndex
+            ]
+            .src;
+
+
+    popup.classList.add(
+        "show"
+    );
+
+}
+
+
+function closePhoto(e){
+
+    if(
+        e &&
+        e.target &&
+        e.target.id!=="photoPopup" &&
+        !e.target.classList.contains(
+            "closePopup"
+        )
+    ){
+
+        return;
+
+    }
+
+
+    document
+        .getElementById(
+            "photoPopup"
+        )
+        .classList
+        .remove("show");
+
+}
+
+
+/* =====================================================
+   LETTER
+===================================================== */
+
+const letterText=`
+
+Cle, aku mau komplain deh. Kamu tuh kalau cantik jangan keterlaluan bisa nggak? Orang lain juga punya kehidupan yang harus dijalani, masa aku harus berhenti sebentar cuma buat mikir, "nih orang kok cantik banget, ya?"
+
+   Kamu sadar nggak sih kalau kamu itu cantik? Kalau sadar, ya bagus. Kalau nggak sadar, sini aku kasih tahu. Kalau masih nggak percaya juga, yaelahh Clee masa aku harus bikin ppt dulu buat menjelaskan fakta yang satu ini.
+
+    Cle, aku tuh sebenarnya mau menjaga image sebagai cowok yang cool, tenang, dan nggak gampang terbawa perasaan.
+
+Makanya aku selama ini berusaha bersikap biasa aja.
+
+Tapi ya gimana, orang aku suka sama kamu.
+
+Ya udah lah bodo amat, image bisa dibangun kembali, kesempatan buat jujur nggak selalu datang dua kali.
+    
+    I love you. 🤍
+
+`;
+
+
+function startTyping(){
+
+    if(
+        typingStarted
+    ){
+
+        return;
+
+    }
+
+
+    typingStarted=true;
+
+
+    const target=
+        document.getElementById(
+            "typedLetter"
+        );
+
+
+    let i=0;
+
+
+    function type(){
+
+        if(
+            i<
+            letterText.length
+        ){
+
+            target.innerHTML=
+                letterText
+                .slice(
+                    0,
+                    i+1
+                )
+                .replace(
+                    /\n/g,
+                    "<br>"
+                )
+                +
+                '<span class="cursor"></span>';
+
+
+            i++;
+
+
+            setTimeout(
+                type,
+                25
+            );
+
+        }
+
+        else{
+
+            target.innerHTML=
+                letterText
+                .replace(
+                    /\n/g,
+                    "<br>"
+                );
+
+
+            document
+                .getElementById(
+                    "letterNext"
+                )
+                .classList
+                .remove("hidden");
+
+
+            addHappiness(15);
+
+        }
+
+    }
+
+
+    type();
+
+
+    document
+        .getElementById(
+            "letterBtn"
+        )
+        .classList
+        .add("hidden");
+
+}
+
+
+/* =====================================================
+   QUIZ
+===================================================== */
+
+function loadQuiz(){
+
+    const q=
+        CONFIG.quiz[
+            quizIndex
+        ];
+
+
+    document
+        .getElementById(
+            "question"
+        )
+        .textContent=
+        q.q;
+
+
+    const answers=
+        document.getElementById(
+            "answers"
+        );
+
+
+    answers.innerHTML="";
+
+
+    document
+        .getElementById(
+            "quizResult"
+        )
+        .textContent="";
+
+
+    q.a.forEach(
+        (answer,index)=>{
+
+            const btn=
+                document.createElement(
+                    "button"
+                );
+
+
+            btn.className=
+                "answer";
+
+
+            btn.textContent=
+                answer;
+
+
+            btn.onclick=()=>{
+
+                if(
+                    index===
+                    q.correct
+                ){
+
+                    btn.classList.add(
+                        "correct"
+                    );
+
+
+                    document
+                        .getElementById(
+                            "quizResult"
+                        )
+                        .textContent=
+                        "OKAAIIIY.";
+
+
+                    addHappiness(8);
+
+
+                    quizIndex++;
+
+
+                    if(
+                        quizIndex>=
+                        CONFIG.quiz.length
+                    ){
+
+                        document
+                            .getElementById(
+                                "quizNext"
+                            )
+                            .classList
+                            .remove("hidden");
+
+                    }
+
+                    else{
+
+                        setTimeout(
+                            loadQuiz,
+                            900
+                        );
+
+                    }
+
+                }
+
+                else{
+
+                    btn.classList.add(
+                        "wrong"
+                    );
+
+
+                    document
+                        .getElementById(
+                            "quizResult"
+                        )
+                        .textContent=
+                        "Hmm... coba lagi 👀";
+
+                }
+
+            };
+
+
+            answers.appendChild(
+                btn
+            );
+
+        }
+    );
+
+}
+
+
+/* =====================================================
+   MYSTERY
+===================================================== */
+
+function chooseMystery(
+    button,
+    index
+){
+
+    if(
+        mysteryDone
+    ){
+
+        return;
+
+    }
+
+
+    mysteryDone=true;
+
+
+    const messages=[
+
+        "🎀 Kamu dapat: satu pengingat bahwa kamu cantik.",
+
+        "💗 Kamu dapat: satu pengingat bahwa kamu spesial.",
+
+        "✨ Kamu dapat: satu pengingat bahwa kamu my love"
+
+    ];
+
+
+    button.textContent="💗";
+
+
+    document
+        .getElementById(
+            "mysteryResult"
+        )
+        .textContent=
+        messages[index];
+
+
+    document
+        .getElementById(
+            "mysteryNext"
+        )
+        .classList
+        .remove("hidden");
+
+
+    addHappiness(15);
+
+    createHearts(10);
+
+}
+
+
+/* =====================================================
+   RUNAWAY
+===================================================== */
+
+function runaway(){
+
+    runawayCount++;
+
+
+    const btn=
+        document.getElementById(
+            "noBtn"
+        );
+
+
+    const parent=
+        document.querySelector(
+            ".runaway"
+        );
+
+
+    const maxX=
+        Math.max(
+            10,
+            parent.clientWidth/2-70
+        );
+
+
+    const x=
+        (Math.random()*2-1)*
+        maxX;
+
+
+    const y=
+        Math.random()*60-30;
+
+
+    btn.style.transform=
+        `translate(
+            calc(-50% + ${x}px),
+            ${y}px
+        )`;
+
+
+    if(
+        runawayCount===1
+    ){
+
+        toast(
+            "AWOKAWOKA 😭"
+        );
+
+    }
+
+    else if(
+        runawayCount===3
+    ){
+
+        toast(
+            "UDAH NYERAH AJA NANTI TETEP AKU BELIIN KOK 😭😭"
+        );
+
+    }
+
+    else if(
+        runawayCount>=5
+    ){
+
+        toast(
+            "YAUDAH TERSERAH KAMUU 😭"
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   WISH
+===================================================== */
+
+function saveWish(){
+
+    const wish=
+        document
+            .getElementById(
+                "wish"
+            )
+            .value
+            .trim();
+
+
+    if(
+        !wish
+    ){
+
+        toast(
+            "Tulis harapannya dulu dong 🥺"
+        );
+
+
+        return;
+
+    }
+
+
+    document
+        .getElementById(
+            "wishResult"
+        )
+        .innerHTML=`
+
+        ✨ Harapanmu sudah disimpan.
+
+        <br>
+
+        Semoga tahun ini semesta
+        diam-diam bantu mewujudkannya.
+
+        `;
+
+
+    document
+        .getElementById(
+            "wishNext"
+        )
+        .classList
+        .remove("hidden");
+
+
+    addHappiness(20);
+
+    createHearts(10);
+
+}
+
+
+/* =====================================================
+   FINAL
+===================================================== */
+
+function celebrate(){
+
+    document
+        .getElementById(
+            "finalText"
+        )
+        .classList
+        .remove("hidden");
+
+
+    addHappiness(100);
+
+    createHearts(30);
+
+    createConfetti(70);
+
+
+    toast(
+        "I LOVE YOU💗"
+    );
+
+}
+
+
+/* =====================================================
+   HEART EFFECT
+===================================================== */
+
+function createHearts(amount){
+
+    const symbols=[
+
+        "💗",
+        "💕",
+        "♡",
+        "♥",
+        "🎀",
+        "✨"
+
+    ];
+
+
+    for(
+        let i=0;
+        i<amount;
+        i++
+    ){
+
+        const el=
+            document.createElement(
+                "div"
+            );
+
+
+        el.className=
+            "float";
+
+
+        el.textContent=
+            symbols[
+                Math.floor(
+                    Math.random()*
+                    symbols.length
+                )
+            ];
+
+
+        el.style.left=
+            Math.random()*100+
+            "vw";
+
+
+        el.style.bottom=
+            "-30px";
+
+
+        el.style.fontSize=
+            14+
+            Math.random()*22+
+            "px";
+
+
+        el.style.animationDuration=
+            3+
+            Math.random()*2+
+            "s";
+
+
+        document
+            .body
+            .appendChild(
+                el
+            );
+
+
+        setTimeout(
+            ()=>el.remove(),
+            5500
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   CONFETTI
+===================================================== */
+
+function createConfetti(amount){
+
+    const symbols=[
+
+        "🎀",
+        "✨",
+        "💗",
+        "🎉",
+        "⭐",
+        "💕"
+
+    ];
+
+
+    for(
+        let i=0;
+        i<amount;
+        i++
+    ){
+
+        const el=
+            document.createElement(
+                "div"
+            );
+
+
+        el.className=
+            "confetti";
+
+
+        el.textContent=
+            symbols[
+                Math.floor(
+                    Math.random()*
+                    symbols.length
+                )
+            ];
+
+
+        el.style.left=
+            Math.random()*100+
+            "vw";
+
+
+        el.style.fontSize=
+            10+
+            Math.random()*18+
+            "px";
+
+
+        el.style.animationDelay=
+            Math.random()*.8+
+            "s";
+
+
+        el.style.animationDuration=
+            2+
+            Math.random()*2+
+            "s";
+
+
+        document
+            .body
+            .appendChild(
+                el
+            );
+
+
+        setTimeout(
+            ()=>el.remove(),
+            5000
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+let toastTimer;
+
+
+function toast(message){
+
+    const t=
+        document.getElementById(
+            "toast"
+        );
+
+
+    t.textContent=
+        message;
+
+
+    t.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer=
+        setTimeout(()=>{
+
+            t.classList.remove(
+                "show"
+            );
+
+        },2200);
+
+}
+
+
+/* =====================================================
+   KEYBOARD
+===================================================== */
+
+document.addEventListener(
+    "keydown",
+    e=>{
+
+        if(
+            e.key>="0" &&
+            e.key<="9"
+        ){
+
+            keyPress(
+                e.key
+            );
+
+        }
+
+
+        if(
+            e.key==="Backspace"
+        ){
+
+            deleteKey();
+
+        }
+
+
+        if(
+            e.key==="ArrowRight" &&
+            !document
+                .getElementById(
+                    "main"
+                )
+                .classList
+                .contains("hidden")
+        ){
+
+            nextPage();
+
+        }
+
+
+        if(
+            e.key==="ArrowLeft" &&
+            !document
+                .getElementById(
+                    "main"
+                )
+                .classList
+                .contains("hidden")
+        ){
+
+            previousPage();
+
+        }
+
+    }
+);
+
+
+/* =====================================================
+   INITIAL
+===================================================== */
+
+document
+    .getElementById(
+        "nameA"
+    )
+    .textContent=
+    CONFIG.nama;
+
+
+document
+    .getElementById(
+        "nameB"
+    )
+    .textContent=
+    CONFIG.nama;
+
+
+document
+    .getElementById(
+        "nameFinal"
+    )
+    .textContent=
+    CONFIG.nama;
+
+
+updateNavigation();
+
+</script>
+
+</body>
+</html>
